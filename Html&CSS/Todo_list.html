@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Style for the whole page to have a background color of purple -->
+<div style="background-color: #f3e9ff; min-height: 100vh; padding: 20px;">
+
+    <!-- Header section with a button to add tasks -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-primary" style="font-weight: bold; color: #6a0dad; margin: 0;">Todo Lists</h1>
+        <a href="{% url 'Todo:add_todo' %}" class="btn btn-success" style="font-weight: bold;">Add New ToDo</a>
+    </div>
+
+    <!-- Provision to search and filter the task based on the category provided suring task addition or modifications -->
+    <form method="get" action="{% url 'Todo:todo_list' %}" class="mb-4 p-3 rounded" style="background-color: #e6d6ff;">
+        <div class="form-row align-items-center d-flex justify-content-center">
+            <div class="col-sm-3">
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search tasks based on the category provided"
+                    value="{{ request.GET.search }}"
+                    class="form-control"
+                >
+            </div>
+            <div class="col-sm-3">
+                <select name="category" class="form-control">
+                    <!-- Drop down listing two categories as of now -->
+                    <option value="">All Categories</option>
+                    <option value="Academics" {% if request.GET.category == "Academics" %}selected{% endif %}>Academics</option>
+                    <option value="Personal" {% if request.GET.category == "Personal" %}selected{% endif %}>Personal</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Overdue tasks section which will be displayed only when the deadline time is passed and the task is incomplete -->
+    {% if overdue_tasks %}
+        <div class="mb-5">
+            <h2 class="text-danger font-weight-bold text-center">Overdue Tasks</h2>
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="bg-danger text-white">
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Deadline</th>
+                    </tr>
+                </thead>
+                <!-- overdue task displays three main categories like title, deadline and description as these are the mandatory fields -->
+                <tbody>
+                    {% for task in overdue_tasks %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
+                        <td>{{ task.deadline }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+    <!-- Listing of all tasks added. This section list all the headers which were present as during the task addition -->
+    <div class="p-3 rounded" style="background-color: #e6d6ff;">
+        <h2 class="text-center mb-4" style="color: #6a0dad; font-weight: bold;">All Tasks</h2>
+        <table class="table table-hover table-bordered">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Deadline</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Progress</th>
+                    <th>Completed</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in Todo_list %}
+                <tr>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.description }}</td>
+                    <td>{{ post.deadline }}</td>
+                    <td>{{ post.category }}</td>
+                    <td>{{ post.priority }}</td>
+                    <td>{{ post.progress }}</td>
+                    <td>
+                        {% if post.completed %}
+                            <span class="text-success font-weight-bold">Yes</span>
+                        {% else %}
+                            <span class="text-danger font-weight-bold">No</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'Todo:edit_todo' post.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'Todo:delete_todo' post.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="{% url 'Todo:toggle_complete' post.id %}" class="btn btn-sm btn-primary">
+                            Mark as {% if not post.completed %}Completed{% else %}Pending{% endif %}
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

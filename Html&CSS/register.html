@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'Todo/css/styles.css' %}">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form method="post" class="register-form">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <!-- Field to get the full name of the user -->
+            <div class="form-group">
+                <label for="id_name">Name</label>
+                <div class="input-without-icon">
+                    {{ form.name }}
+                </div>
+            </div>
+
+            <!-- Field to get the username, which will be always used for login -->
+            <div class="form-group">
+                <label for="id_username">Username</label>
+                <div class="input-with-icon">
+                    {{ form.username }}
+                    <span class="info-icon" title="Configure the username to log in.">&#9432;</span>
+                </div>
+            </div>
+
+            <!-- Field to get the email of the user, which might be needed for password resetting -->
+            <div class="form-group">
+                <label for="id_email">Email</label>
+                <div class="input-without-icon">
+                    {{ form.email }}
+                </div>
+            </div>
+
+            <!-- Field to set the password for the user account -->
+            <div class="form-group">
+                <label for="id_password1">Password</label>
+                <div class="input-with-icon">
+                    {{ form.password1 }}
+                    <span class="info-icon" title="Your password must be at least 8 characters long.">&#9432;</span>
+                </div>
+            </div>
+
+            <!-- Field to confirm password with the user -->
+            <div class="form-group">
+                <label for="id_password2">Confirm Password</label>
+                <div class="input-without-icon">
+                    {{ form.password2 }}
+                </div>
+            </div>
+
+            <!-- submit button registers the users successfully -->
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+
+        <!-- Link provided for the existing user to login -->
+        <p class="login-link">
+            Already have an account? <a href="{% url 'Todo:login' %}">Login</a>
+        </p>
+    </div>
+</body>
+</html>

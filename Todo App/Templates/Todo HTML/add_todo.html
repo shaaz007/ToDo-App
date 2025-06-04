@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="background-color: #5b5b5b; min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <!-- Form container to add the todo-task -->
+    <div class="container p-4 rounded shadow" style="background-color: #ffffff; max-width: 600px;">
+        <h2 class="text-center mb-4" style="color: #010102; font-weight: bold;">Add ToDo</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Title of the task which is mandatory -->
+            <div class="form-group mb-3">
+                <label for="id_title">{{ form.title.label }} <span style="color: red;">*</span></label>
+                {{ form.title }}
+            </div>
+
+            <!-- Description of the task, which is mandatory -->
+            <div class="form-group mb-3">
+                <label for="id_description">{{ form.description.label }} <span style="color: red;">*</span></label>
+                {{ form.description }}
+            </div>
+
+            <!-- Deadline of task, which is mandatory -->
+            <div class="form-group mb-3">
+                <label for="id_deadline">{{ form.deadline.label }} <span style="color: red;">*</span></label>
+                {{ form.deadline }}
+            </div>
+
+            <!-- Category of the tasks -->
+            <div class="form-group mb-3">
+                <label for="id_category">{{ form.category.label }}</label>
+                {{ form.category }}
+            </div>
+
+            <!-- Priority level which the user consideres can be chosen-->
+            <div class="form-group mb-3">
+                <label for="id_priority">{{ form.priority.label }}</label>
+                {{ form.priority }}
+            </div>
+
+            <!-- Recurrence -->
+            <div class="form-group mb-3">
+                <label for="id_recurrence">{{ form.recurrence.label }}</label>
+                {{ form.recurrence }}
+            </div>
+
+            <!-- Attachment of the file-->
+            <div class="form-group mb-3">
+                <label for="id_attachment">{{ form.attachment.label }}</label>
+                {{ form.attachment }}
+            </div>
+
+            <!-- Progress -->
+            <div class="form-group mb-3">
+                <label for="id_progress">{{ form.progress.label }}</label>
+                {{ form.progress }}
+            </div>
+
+            <!-- Completed -->
+            <div class="form-group mb-4">
+                <label for="id_completed">{{ form.completed.label }}</label>
+                {{ form.completed }}
+            </div>
+
+            <!-- Submit Button which adds the task successfully if the mandatory fields are configured properly -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" style="background-color: #8f8d90; border: none;">
+                    Add ToDo
+                </button>
+            </div>
+        </form>
+
+        <!-- Link to traverse back to the page which lists all the tasks -->
+        <div class="text-center mt-3">
+            <a href="{% url 'Todo:todo_list' %}" class="btn btn-outline-secondary">Back to ToDo List</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

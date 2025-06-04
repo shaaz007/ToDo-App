@@ -1,0 +1,181 @@
+/* General reset */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3e9ff; /* colour which gives light purple background */
+    color: #333;
+    display: flex; /* alignment to display the content center form vertically and horizontally */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* The full viewport height */
+}
+
+/* Container styling */
+.register-container {
+    width: 500px; /* Fixed width for the text boxes are mentioned */
+    padding: 20px;
+    background: #ffffff; /* colour which gives White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+    border: 2px solid #d1b3ff; /* colour which gives light purple border */
+}
+
+/* Center the heading */
+.register-container h2 {
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for better visibility */
+    color: #6a0dad; /* Dark purple color */
+}
+
+/* Form group */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input with icon and without icon wrappers */
+.input-with-icon,
+.input-without-icon {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-with-icon input,
+.input-without-icon input {
+    flex: 1;
+    padding: 10px;
+    width: 100%; /* Ensures all fields are the same width */
+    border: 1px solid #d1b3ff; /* Light purple border */
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f7efff; /* Very light purple background */
+    color: #333;
+    box-sizing: border-box; /* Includes padding and border in the width */
+}
+
+/* Input focus state */
+.input-with-icon input:focus,
+.input-without-icon input:focus {
+    outline: none;
+    border-color: #6a0dad; /* Dark purple border on focus */
+    box-shadow: 0 0 4px rgba(106, 13, 173, 0.5); /* Subtle glow effect */
+}
+
+/* Info icon styling */
+.info-icon {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #6a0dad; /* Dark purple */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.info-icon:hover {
+    color: #4b0082; /* Even darker purple */
+}
+
+/* Button */
+.btn-submit {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #6a0dad; /* Dark purple */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #4b0082;
+}
+
+/* Login and Register links */
+.login-link,
+.forgot-password {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.login-link a,
+.forgot-password a {
+    color: #6a0dad; /* Dark purple */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover,
+.forgot-password a:hover {
+    text-decoration: underline;
+    color: #4b0082; /* Even darker purple */
+}
+
+/* Forgot Password - right aligned */
+.forgot-password {
+    text-align: right;
+    margin-top: -10px; /* Adjust spacing above */
+    margin-bottom: 15px; /* Add spacing below */
+}
+
+/* Edit and Add ToDo Forms */
+.todo-form-container {
+    width: 600px;
+    max-width: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px auto;
+}
+
+.todo-form-container h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #6a0dad;
+    margin-bottom: 20px;
+}
+
+.todo-form-container .form-group {
+    margin-bottom: 15px;
+}
+
+.todo-form-container button {
+    background-color: #6a0dad;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.todo-form-container button:hover {
+    background-color: #4b0082;
+}
+
+.todo-form-container .back-link {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: #6a0dad;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.todo-form-container .back-link:hover {
+    color: #4b0082;
+}
+
+
+

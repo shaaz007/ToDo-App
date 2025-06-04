@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Full Page Container with Purple Background -->
+<div style="background-color: #f3e9ff; min-height: 100vh; padding: 20px;">
+
+    <!-- Header Section of dashboard aligned at the center of the page -->
+    <div class="d-flex justify-content-center align-items-center mb-4">
+        <h1 class="me-3" style="color: #6a0dad; font-weight: bold; margin: 0;">Dashboard</h1>
+    </div>
+
+    <!-- Task Summary Cards Section which updates each category-->
+    <div class="container">
+        <div class="row mt-4">
+            <!-- Total tasks count added so far by the user which includes pending as well as completed tasks-->
+            <div class="col-md-3">
+                <div class="card text-white mb-3" style="background-color: #6a0dad; border: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total Tasks</h5>
+                        <p class="card-text display-4">{{ total_tasks }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completed task count will be updated here-->
+            <div class="col-md-3">
+                <div class="card text-white mb-3" style="background-color: #8e44ad; border: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Completed Tasks</h5>
+                        <p class="card-text display-4">{{ completed_tasks }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending task count will be updated here -->
+            <div class="col-md-3">
+                <div class="card text-white mb-3" style="background-color: #b084cc; border: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Pending Tasks</h5>
+                        <p class="card-text display-4">{{ pending_tasks }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overdue tasks count would be updated here -->
+            <div class="col-md-3">
+                <div class="card text-white mb-3" style="background-color: #d3a3e6; border: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Overdue Tasks</h5>
+                        <p class="card-text display-4">{{ overdue_tasks }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Progress section bar would be updated here each time when the user completes the tasks -->
+    <div class="container mt-4">
+        <h3 class="text-center" style="color: #6a0dad; font-weight: bold;">Task Completion Progress</h3>
+        {% if total_tasks > 0 %}
+            <div class="progress mt-3" style="height: 25px; border-radius: 5px; background-color: #d9c2f4;">
+                <div
+                    class="progress-bar progress-bar-striped progress-bar-animated"
+                    role="progressbar"
+                    style="width: {{ completed_tasks|floatformat:2 }}%; background-color: #6a0dad;"
+                    aria-valuenow="{{ completed_tasks }}"
+                    aria-valuemin="0"
+                    aria-valuemax="{{ total_tasks }}">
+                    {{ completed_tasks }} / {{ total_tasks }} Completed
+                </div>
+            </div>
+        <!-- If there is no task added, appropriate prompt would be displayed -->
+        {% else %}
+            <p class="text-center mt-3" style="color: #333;">No tasks available yet. Start adding tasks to track progress!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

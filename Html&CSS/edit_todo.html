@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="background-color: #f3e9ff; min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <!-- Form Container -->
+    <div class="container p-4 rounded shadow" style="background-color: #ffffff; max-width: 600px;">
+        <h2 class="text-center mb-4" style="color: #6a0dad; font-weight: bold;">Edit Task</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Title -->
+            <div class="form-group mb-3">
+                <label for="id_title">{{ form.title.label }} <span style="color: red;">*</span></label>
+                {{ form.title }}
+            </div>
+
+            <!-- Description -->
+            <div class="form-group mb-3">
+                <label for="id_description">{{ form.description.label }} <span style="color: red;">*</span></label>
+                {{ form.description }}
+            </div>
+
+            <!-- Deadline -->
+            <div class="form-group mb-3">
+                <label for="id_deadline">{{ form.deadline.label }} <span style="color: red;">*</span></label>
+                {{ form.deadline }}
+            </div>
+
+            <!-- Category -->
+            <div class="form-group mb-3">
+                <label for="id_category">{{ form.category.label }}</label>
+                {{ form.category }}
+            </div>
+
+            <!-- Priority -->
+            <div class="form-group mb-3">
+                <label for="id_priority">{{ form.priority.label }}</label>
+                {{ form.priority }}
+            </div>
+
+            <!-- Recurrence -->
+            <div class="form-group mb-3">
+                <label for="id_recurrence">{{ form.recurrence.label }}</label>
+                {{ form.recurrence }}
+            </div>
+
+            <!-- Attachment -->
+            <div class="form-group mb-3">
+                <label for="id_attachment">{{ form.attachment.label }}</label>
+                {{ form.attachment }}
+            </div>
+
+            <!-- Progress -->
+            <div class="form-group mb-3">
+                <label for="id_progress">{{ form.progress.label }}</label>
+                {{ form.progress }}
+            </div>
+
+            <!-- Completed -->
+            <div class="form-group mb-4">
+                <label for="id_completed">{{ form.completed.label }}</label>
+                {{ form.completed }}
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" style="background-color: #6a0dad; border: none;">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+
+        <!-- Link to traverse back to todo list page -->
+        <div class="text-center mt-3">
+            <a href="{% url 'Todo:todo_list' %}" class="btn btn-outline-secondary">Back to ToDo List</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="background-color: #f3e9ff; min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <!-- Form container for delete -->
+    <div class="container p-4 rounded shadow" style="background-color: #ffffff; max-width: 600px; text-align: center;">
+        <h2 class="mb-4" style="color: #6a0dad; font-weight: bold;">Delete Task</h2>
+        <p>Are you sure you want to delete the task <strong>{{ todo.title }}</strong>? This action cannot be modified later.</p>
+
+        <form method="post" style="margin-top: 20px;">
+            {% csrf_token %}
+            <!-- Button that re-confirms for delete option -->
+            <button type="submit" class="btn btn-danger" style="margin-right: 10px;">
+                Confirm Delete
+            </button>
+            <!-- Cancel button if the user does'nt need to delete the task -->
+            <a href="{% url 'Todo:todo_list' %}" class="btn btn-secondary">
+                Cancel
+            </a>
+        </form>
+    </div>
+</div>
+{% endblock %}

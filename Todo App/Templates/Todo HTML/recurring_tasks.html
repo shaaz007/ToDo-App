@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Recurring Tasks</h2>
+    {% if recurring_todos %}
+        <ul class="list-group">
+            {% for task in recurring_todos %}
+                <li class="list-group-item">
+                    <strong>{{ task.title }}</strong> - Recurs: {{ task.recurrence }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recurring tasks found.</p>
+    {% endif %}
+</div>
+{% endblock %}

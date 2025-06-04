@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'Todo/css/styles.css' %}">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Login</h2>
+        <form method="post" class="register-form">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <!-- Field to provide the username which was provided during registration -->
+            <div class="form-group">
+                <label for="id_username">Username</label>
+                <div class="input-with-icon">
+                    {{ form.username }}
+                    <span class="info-icon" title="Enter your username.">&#9432;</span>
+                </div>
+            </div>
+
+            <!-- Field to enter the password which was set during the registration -->
+            <div class="form-group">
+                <label for="id_password">Password</label>
+                <div class="input-with-icon">
+                    {{ form.password }}
+                    <span class="info-icon" title="Enter your password.">&#9432;</span>
+                </div>
+            </div>
+
+            <!-- Link to reset the password by user  -->
+            <p class="forgot-password">
+                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+            </p>
+
+            <!-- The login button, which checks the authentication and allows user to proceed adding tasks -->
+            <button type="submit" class="btn-submit">Login</button>
+        </form>
+
+        <!-- Link to register if the user is new to the application -->
+        <p class="login-link">
+            Don't have an account? <a href="{% url 'Todo:register' %}">Register</a>
+        </p>
+    </div>
+</body>
+</html>

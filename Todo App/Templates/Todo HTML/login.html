@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f1f3f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <div style="background: #ffffff; border-radius: 12px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); padding: 30px; text-align: center; width: 90%; max-width: 400px;">
+        <h2 style="font-size: 1.8rem; color: #343a40; margin-bottom: 20px;">Login</h2>
+        <form method="post" style="margin-top: 10px; text-align: left;">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div style="margin-bottom: 15px;">
+                <label for="id_username" style="font-weight: bold; color: #212529; margin-bottom: 5px; display: block;">Username</label>
+                <div style="position: relative;">
+                    {{ form.username }}
+                    <span title="Enter your username." style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; color: #6c757d; cursor: pointer;">&#9432;</span>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="id_password" style="font-weight: bold; color: #212529; margin-bottom: 5px; display: block;">Password</label>
+                <div style="position: relative;">
+                    {{ form.password }}
+                    <span title="Enter your password." style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; color: #6c757d; cursor: pointer;">&#9432;</span>
+                </div>
+            </div>
+
+            <p style="margin-top: 10px;">
+                <a href="{% url 'password_reset' %}" style="color: #007bff; text-decoration: none;">Forgot Password?</a>
+            </p>
+
+            <button type="submit" style="background-color: #007bff; color: #ffffff; border: none; border-radius: 5px; padding: 10px 20px; font-size: 1rem; cursor: pointer; width: 100%; margin-top: 15px;">Login</button>
+        </form>
+
+        <p style="margin-top: 15px;">
+            Don't have an account? <a href="{% url 'Todo:register' %}" style="color: #007bff; text-decoration: none;">Register</a>
+        </p>
+    </div>
+</body>
+</html>
