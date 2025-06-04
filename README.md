@@ -1,4 +1,4 @@
-# 📝 Final Project – ToDo App
+#  ToDo App
 
 A simple and clean ToDo application built as part of a final project. This app helps users manage their daily tasks efficiently.
 
