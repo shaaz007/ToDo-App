@@ -24,13 +24,7 @@ A simple and clean ToDo application built as part of a final project. This app h
 - **Database:** MongoDB / SQLite / LocalStorage  
 - **Other Tools:** Git, GitHub
 
-1. ##Clone the repository
-```bash
-git clone https://github.com/shaaz007/ToDo-App.git
-
-
-
-## 📂 Project Structure
+  ## 📂 Project Structure
 
 ToDo-App/
 ├── static/
@@ -46,10 +40,11 @@ ToDo-App/
 
 To run the project locally:
 
-1. ##Clone the repository
+1. **Clone the Repository**
 ```bash
 git clone https://github.com/shaaz007/ToDo-App.git
 cd ToDo-App
+
 
 2.**Create and activate a virtual environment (optional but recommended)**
 python -m venv venv
@@ -63,7 +58,8 @@ python app.py
 
 5. Open your browser and go to http://localhost:5000
 
-🐍 **PythonAnywhere Deployment**
+
+🐍 PythonAnywhere Deployment
 To deploy the app:
 
 Sign up at PythonAnywhere
