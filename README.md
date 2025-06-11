@@ -24,7 +24,7 @@ A simple and clean ToDo application built as part of a final project. This app h
 - **Database:** MongoDB / SQLite / LocalStorage  
 - **Other Tools:** Git, GitHub
 
-1. **Clone the repository**
+1. ##Clone the repository
 ```bash
 git clone https://github.com/shaaz007/ToDo-App.git
 
@@ -46,7 +46,7 @@ ToDo-App/
 
 To run the project locally:
 
-1. **Clone the repository**
+1. ##Clone the repository
 ```bash
 git clone https://github.com/shaaz007/ToDo-App.git
 cd ToDo-App
